@@ -1,0 +1,22 @@
+.day[data-today="true"] {
+    @apply bg-light-green;
+}
+
+.day[data-outside="true"] {
+    @apply text-black opacity-100;
+}
+
+.day[data-selected="true"] {
+    @apply bg-green text-white;
+}
+
+.day[data-in-range="true"],
+.day[data-in-range="true"].day[data-today="true"] {
+    @apply bg-green text-white;
+}
+
+.day[data-in-range="true"]:hover,
+.day[data-in-range="true"].day[data-today="true"],
+.day[data-in-range="true"].day[data-today="true"]:hover {
+    background-image: none !important;
+}

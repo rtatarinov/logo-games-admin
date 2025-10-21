@@ -1,0 +1,30 @@
+.day {
+    @apply w-12 h-12 lg:w-9 lg:h-9;
+}
+
+.day[data-weekend="true"] {
+    @apply text-red;
+}
+
+.day[data-hidden="true"] {
+    @apply text-light-grey;
+}
+
+.day[data-today="true"] {
+    @apply bg-light-green
+}
+
+.day:hover {
+    @apply !bg-light-green;
+}
+
+.day[data-selected="true"],
+.day[data-in-range="true"],
+.day[data-selected="true"]:hover,
+.day[data-in-range="true"]:hover {
+    @apply !bg-green text-white
+}
+
+.day[data-disabled="true"] {
+    @apply !bg-transparent;
+}

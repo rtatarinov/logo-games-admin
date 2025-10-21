@@ -1,0 +1,20 @@
+diff --git a/node_modules/@farfetched/zod/dist/zod.cjs b/node_modules/@farfetched/zod/dist/zod.cjs
+index d9c21ed..bc14678 100644
+--- a/node_modules/@farfetched/zod/dist/zod.cjs
++++ b/node_modules/@farfetched/zod/dist/zod.cjs
+@@ -1 +1 @@
+-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function o(t){function n(r){return t.safeParse(r).success}return{isData:n,getErrorMessages(r){const s=t.safeParse(r);return s.success?[]:s.error.errors.map(e=>{const a=e.path.join(".");return a!==""?`${e.message}, path: ${a}`:e.message})}}}exports.zodContract=o;
++"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function o(t){function n(r){return t.safeParse(r).success}return{isData:n,getErrorMessages(r){const s=t.safeParse(r);return s.success?[]:s.error.issues.map(e=>{const a=e.path.join(".");return a!==""?`${e.message}, path: ${a}`:e.message})}}}exports.zodContract=o;
+diff --git a/node_modules/@farfetched/zod/dist/zod.js b/node_modules/@farfetched/zod/dist/zod.js
+index b57f3b1..23b8305 100644
+--- a/node_modules/@farfetched/zod/dist/zod.js
++++ b/node_modules/@farfetched/zod/dist/zod.js
+@@ -6,7 +6,7 @@ function o(e) {
+     isData: n,
+     getErrorMessages(r) {
+       const t = e.safeParse(r);
+-      return t.success ? [] : t.error.errors.map((s) => {
++      return t.success ? [] : t.error.issues.map((s) => {
+         const a = s.path.join(".");
+         return a !== "" ? `${s.message}, path: ${a}` : s.message;
+       });

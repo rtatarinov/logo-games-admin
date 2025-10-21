@@ -1,0 +1,1502 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/admin": {
+      "post": {
+        "operationId": "AdminController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "/api/admin/login": {
+      "post": {
+        "operationId": "AdminController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginAdminDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "/api/game": {
+      "get": {
+        "operationId": "GameController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      },
+      "post": {
+        "operationId": "GameController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      }
+    },
+    "/api/game/new": {
+      "get": {
+        "operationId": "GameController_findNew",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      }
+    },
+    "/api/game/{slug}": {
+      "get": {
+        "operationId": "GameController_findOne",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      }
+    },
+    "/api/game/{id}": {
+      "patch": {
+        "operationId": "GameController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      },
+      "delete": {
+        "operationId": "GameController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      }
+    },
+    "/api/game/{id}/favorites": {
+      "post": {
+        "operationId": "GameController_addGameToFavorites",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      },
+      "delete": {
+        "operationId": "GameController_removeGameFromFavorites",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Game"
+        ]
+      }
+    },
+    "/api/user/current": {
+      "get": {
+        "operationId": "UserController_current",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "operationId": "UserController_getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "ID пользователя",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Получить пользователя по ID",
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user/vk/{vkId}": {
+      "get": {
+        "operationId": "UserController_getUserByVkId",
+        "parameters": [
+          {
+            "name": "vkId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user": {
+      "post": {
+        "operationId": "UserController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user/login/email": {
+      "post": {
+        "operationId": "UserController_loginEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserByEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user/login/vk": {
+      "post": {
+        "operationId": "UserController_loginVk",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserByVkDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/user/logout": {
+      "post": {
+        "operationId": "UserController_logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/token/{userId}/session": {
+      "get": {
+        "operationId": "TokenController_getUserSessionsById",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "description": "ID пользователя",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RefreshUserTokenDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Получить список сессий пользователя по ID",
+        "tags": [
+          "Session"
+        ]
+      }
+    },
+    "/api/payment": {
+      "post": {
+        "operationId": "PaymentController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Payment"
+        ]
+      }
+    },
+    "/api/payment/{id}": {
+      "delete": {
+        "operationId": "PaymentController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Payment"
+        ]
+      }
+    },
+    "/api/subscription": {
+      "get": {
+        "operationId": "SubscriptionController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/api/subscription/status": {
+      "get": {
+        "operationId": "SubscriptionController_getUserSubscriptionStatus",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/api/subscription/prolong": {
+      "post": {
+        "operationId": "SubscriptionController_prolong",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/api/subscription/cancel": {
+      "post": {
+        "operationId": "SubscriptionController_cancel",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/api/order": {
+      "get": {
+        "operationId": "OrderController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Order"
+        ]
+      },
+      "post": {
+        "operationId": "OrderController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Order"
+        ]
+      }
+    },
+    "/api/order/{id}": {
+      "get": {
+        "operationId": "OrderController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Order"
+        ]
+      },
+      "delete": {
+        "operationId": "OrderController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Order"
+        ]
+      }
+    },
+    "/api/order/{id}/status": {
+      "get": {
+        "operationId": "OrderController_getOrderStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Order"
+        ]
+      }
+    },
+    "/api/tariff-plan": {
+      "get": {
+        "operationId": "TariffPlanController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      },
+      "post": {
+        "operationId": "TariffPlanController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTariffPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      }
+    },
+    "/api/tariff-plan/{id}": {
+      "get": {
+        "operationId": "TariffPlanController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      },
+      "patch": {
+        "operationId": "TariffPlanController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTariffPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      },
+      "delete": {
+        "operationId": "TariffPlanController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      }
+    },
+    "/api/tariff-plan/{id}/position": {
+      "patch": {
+        "operationId": "TariffPlanController_updatePosition",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTariffPlanPositionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TariffPlan"
+        ]
+      }
+    },
+    "/api/promo-code": {
+      "get": {
+        "operationId": "PromoCodeController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "PromoCode"
+        ]
+      },
+      "post": {
+        "operationId": "PromoCodeController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePromoCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "PromoCode"
+        ]
+      }
+    },
+    "/api/promo-code/usage": {
+      "get": {
+        "operationId": "PromoCodeController_findAllUsages",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "PromoCode"
+        ]
+      }
+    },
+    "/api/promo-code/check": {
+      "post": {
+        "operationId": "PromoCodeController_check",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckPromoCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "PromoCode"
+        ]
+      }
+    },
+    "/api/promo-code/{id}": {
+      "patch": {
+        "operationId": "PromoCodeController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePromoCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "PromoCode"
+        ]
+      }
+    },
+    "/api/category": {
+      "get": {
+        "operationId": "CategoryController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      },
+      "post": {
+        "operationId": "CategoryController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      }
+    },
+    "/api/category/{slug}": {
+      "get": {
+        "operationId": "CategoryController_findOne",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      }
+    },
+    "/api/category/{id}": {
+      "patch": {
+        "operationId": "CategoryController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      },
+      "delete": {
+        "operationId": "CategoryController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      }
+    },
+    "/api/category/{id}/position": {
+      "patch": {
+        "operationId": "CategoryController_updatePosition",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryPositionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Category"
+        ]
+      }
+    },
+    "/api/tag": {
+      "get": {
+        "operationId": "TagController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      },
+      "post": {
+        "operationId": "TagController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTagDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      }
+    },
+    "/api/tag/{slug}": {
+      "get": {
+        "operationId": "TagController_findOne",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      }
+    },
+    "/api/tag/{id}": {
+      "get": {
+        "operationId": "TagController_findById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      },
+      "patch": {
+        "operationId": "TagController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      },
+      "delete": {
+        "operationId": "TagController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      }
+    },
+    "/api/tag/{id}/position": {
+      "patch": {
+        "operationId": "TagController_updatePosition",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagPositionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tag"
+        ]
+      }
+    },
+    "/api/webhook/callback": {
+      "post": {
+        "operationId": "WebhookController_callback",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Webhook"
+        ]
+      }
+    },
+    "/api/webhook/yookassa-notification": {
+      "post": {
+        "operationId": "WebhookController_notify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Webhook"
+        ]
+      }
+    },
+    "/api/marketing/consumers/vk": {
+      "post": {
+        "operationId": "MarketingController_findAll",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVkConsumersDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Marketing"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Logo games API docs",
+    "description": "Logogames docs",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateAdminDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginAdminDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateGameDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateGameDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UserSubscriptionDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "one_time",
+              "recurring",
+              "vk"
+            ],
+            "example": "recurring",
+            "description": "Тип подписки"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "expired",
+              "cancelled",
+              "payment_failed"
+            ],
+            "example": "active",
+            "description": "Статус подписки"
+          },
+          "nextPaymentAt": {
+            "type": "string",
+            "example": "2025-11-21T10:30:00.000Z",
+            "description": "Дата следующего платежа в формате ISO"
+          },
+          "nextPaymentAtUnix": {
+            "type": "number",
+            "example": 1732184200,
+            "description": "Дата следующего платежа в Unix timestamp"
+          },
+          "expiredAt": {
+            "type": "object",
+            "example": "2025-12-21T10:30:00.000Z",
+            "nullable": true,
+            "description": "Дата истечения подписки в формате ISO"
+          }
+        },
+        "required": [
+          "type",
+          "status",
+          "nextPaymentAt",
+          "nextPaymentAtUnix",
+          "expiredAt"
+        ]
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "vkId": {
+            "type": "number",
+            "example": 3327752
+          },
+          "email": {
+            "type": "string",
+            "example": "stay_strong@gmail.com"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Иван"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Иванов"
+          },
+          "avatarUrl": {
+            "type": "object",
+            "example": "https://vk.com/id123456789"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-11-11T11:11:11.111Z"
+          },
+          "updatedAt": {
+            "type": "object",
+            "example": "2022-11-11T11:11:11.111Z"
+          },
+          "trial": {
+            "type": "object",
+            "properties": {
+              "isActive": {
+                "type": "boolean",
+                "example": true
+              },
+              "startAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2025-10-01T00:00:00.000Z"
+              },
+              "endAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2025-10-06T00:00:00.000Z"
+              }
+            },
+            "required": []
+          },
+          "subscription": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserSubscriptionDto"
+              }
+            ]
+          },
+          "favoritesGames": {
+            "example": [
+              12,
+              45,
+              78
+            ],
+            "description": "ID избранных игр пользователя",
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "vkId",
+          "email",
+          "firstName",
+          "lastName",
+          "avatarUrl",
+          "createdAt",
+          "updatedAt",
+          "trial",
+          "subscription",
+          "favoritesGames"
+        ]
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginUserByEmailDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginUserByVkDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RefreshUserTokenDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "Уникальный идентификатор токена"
+          },
+          "userId": {
+            "type": "number",
+            "example": 123,
+            "description": "Идентификатор пользователя"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2025-10-21T10:30:00.000Z",
+            "description": "Дата создания токена"
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "createdAt"
+        ]
+      },
+      "CreatePaymentDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateOrderDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateTariffPlanDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateTariffPlanDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateTariffPlanPositionDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CheckPromoCodeDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreatePromoCodeDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdatePromoCodeDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateCategoryDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateCategoryDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateCategoryPositionDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateTagDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateTagDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateTagPositionDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "GetVkConsumersDto": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}

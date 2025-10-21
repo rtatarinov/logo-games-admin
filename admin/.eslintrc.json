@@ -1,0 +1,297 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:effector/recommended",
+        "plugin:boundaries/recommended",
+        "plugin:oxlint/recommended"
+    ],
+    "ignorePatterns": ["./src/shared/api/generated/*.{ts,tsx,js,cjs,cts,json}"],
+    "overrides": [
+        {
+            "files": ["**/*.test.*"],
+            "rules": {
+                "boundaries/element-types": "off"
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "react",
+        "react-hooks",
+        "react-refresh",
+        "boundaries",
+        "@typescript-eslint",
+        "effector",
+        "hooks",
+        "import",
+        "simple-import-sort"
+    ],
+    "parserOptions": {
+        "projectService": true,
+        "tsconfigRootDir": "."
+    },
+    "rules": {
+        "default-case": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/switch-exhaustiveness-check": "warn",
+
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports",
+                "disallowTypeAnnotations": false,
+                "fixStyle": "separate-type-imports"
+            }
+        ],
+        "@typescript-eslint/consistent-type-exports": [
+            "error",
+            {
+                "fixMixedExportsWithInlineTypeSpecifier": true
+            }
+        ],
+
+        // boundaries
+        "boundaries/element-types": [
+            2,
+            {
+                "default": "disallow",
+                "message": "Is not allowed to import | Read README about slice and segments",
+                "rules": [
+                    {
+                        "allow": [
+                            "processes",
+                            "pages",
+                            "widgets",
+                            "modules",
+                            "infrastructure-entities",
+                            "shared"
+                        ],
+                        "from": "app"
+                    },
+                    {
+                        "allow": [
+                            "pages",
+                            "widgets",
+                            "modules",
+                            "infrastructure-entities",
+                            "shared"
+                        ],
+                        "from": "processes"
+                    },
+                    {
+                        "allow": [
+                            "pages",
+                            "widgets",
+                            "modules",
+                            "infrastructure-entities",
+                            "shared"
+                        ],
+                        "from": "pages"
+                    },
+                    {
+                        "allow": ["widgets", "modules", "infrastructure-entities", "shared"],
+                        "from": "widgets"
+                    },
+                    {
+                        "allow": ["modules", "infrastructure-entities", "shared"],
+                        "from": "modules"
+                    },
+                    {
+                        "allow": ["shared"],
+                        "from":  ["shared", "infrastructure-entities"]
+                    }
+                ]
+            }
+        ],
+        "effector/enforce-effect-naming-convention": "error",
+        "effector/enforce-gate-naming-convention": "error",
+        "effector/enforce-store-naming-convention": "error",
+        "effector/keep-options-order": "error",
+        "effector/mandatory-scope-binding": "error",
+        "effector/no-duplicate-on": "error",
+        // effector
+        "effector/prefer-useUnit": "error",
+        // hooks
+        "hooks/sort": [
+            2,
+            {
+                "groups": [
+                    "useUnit",
+                    "useStore",
+                    "useEvent",
+                    "useState",
+                    "useRef",
+                    "useTheme",
+                    "useMediaQuery",
+                    "useLayoutEffect",
+                    "useEffect"
+                ]
+            }
+        ],
+        // imports
+        "import/no-duplicates": [
+            "error",
+            {
+                "considerQueryString": true
+            }
+        ],
+        "no-console": "error",
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": [
+                    {
+                        "group": [
+                            "@app/infrastructure-entities/*/**",
+                            "@app/modules/*/**",
+                            "@app/widgets/*/**",
+                            "@app/processes/*/**",
+                            "@app/app/**"
+                        ],
+                        "message": "File not exposed from the module. Consider exporting it from an index"
+                    },
+                    {
+                        "group": [
+                            "../**/app",
+                            "../**/processes",
+                            "../**/pages",
+                            "../**/widgets",
+                            "../**/modules",
+                            "../**/infrastructure-entities",
+                            "../**/shared"
+                        ],
+                        "message": "Prefer absolute imports instead of relatives (for root modules)"
+                    }
+                ],
+                "paths": [
+                    {
+                        "name": "@farfetched/core",
+                        "importNames": ["createMutation", "createQuery"],
+                        "message": "Use createAppMutation and createAppQuery from @app/shared/api/http-client/farfetched instead"
+                    },
+                    {
+                        "name": "effector",
+                        "importNames": ["createEvent", "createEffect", "createStore", "createDomain"],
+                        "message": "Use @app/shared/effector instead"
+                    }
+                ]
+            }
+        ],
+        "no-unused-vars": "off",
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "next": ["return", "switch", "if", "for"],
+                "prev": "*"
+            }
+        ],
+        "react/jsx-newline": [
+            "error",
+            {
+                "allowMultilines": true,
+                "prevent": true
+            }
+        ],
+        "react/no-array-index-key": "error",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/self-closing-comp": [
+            "error",
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "react-hooks/exhaustive-deps": "error",
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    // Side effect imports.
+                    ["^\\u0000"],
+                    // Packages `react` related packages come first.
+                    ["^react"],
+                    // Packages.
+                    // Things that start with a letter (or digit or underscore).
+                    ["^\\w"],
+                    // Packages.
+                    // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+                    ["^@?\\w"],
+                    // App
+                    ["^@app/shared"],
+                    ["^@app/presentation"],
+                    ["^@app/infrastructure-entities"],
+                    ["^@app/entities"],
+                    ["^@app/features"],
+                    ["^@app/widgets"],
+                    ["^@app/pages"],
+                    ["^@app/processes"],
+                    ["^@app/app"],
+                    ["^"],
+                    // Parent imports. Put `..` last.
+                    ["^\\.\\./?$"],
+                    // Other relative imports. Put same-folder imports and `.` last.
+                    ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+                    // Style imports.
+                    ["^.+\\.module\\.s?css$"]
+                ]
+            }
+        ]
+    },
+    "settings": {
+        "boundaries/elements": [
+            {
+                "mode": "folder",
+                "pattern": "src/app",
+                "type": "app"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/processes/*",
+                "type": "processes"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/pages/*",
+                "type": "pages"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/widgets/*",
+                "type": "widgets"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/modules/*",
+                "type": "modules"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/infrastructure-entities/*",
+                "type": "infrastructure-entities"
+            },
+            {
+                "mode": "folder",
+                "pattern": "src/shared/*",
+                "type": "shared"
+            }
+        ],
+        "boundaries/ignore": ["**/*.test.*"],
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        },
+        "react": {
+            "createClass": "createReactClass",
+            "fragment": "Fragment",
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
+}

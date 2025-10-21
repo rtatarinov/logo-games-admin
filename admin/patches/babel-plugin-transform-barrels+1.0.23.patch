@@ -1,0 +1,19 @@
+diff --git a/node_modules/babel-plugin-transform-barrels/src/main.js b/node_modules/babel-plugin-transform-barrels/src/main.js
+index e5ccf81..e5bdcec 100644
+--- a/node_modules/babel-plugin-transform-barrels/src/main.js
++++ b/node_modules/babel-plugin-transform-barrels/src/main.js
+@@ -22,7 +22,13 @@ const importDeclarationVisitor = (path, state) => {
+   const directSpecifierASTArray = []
+   for (const specifier of importsSpecifiers) {
+     const importedName = specifier?.imported?.name || "default";
+-    const importSpecifier = barrelFile.getDirectSpecifierObject(importedName).toImportSpecifier();
++      const obj = barrelFile.getDirectSpecifierObject(importedName);
++
++      if (!obj) {
++          continue;
++      }
++
++      const importSpecifier = obj.toImportSpecifier();
+     if (!importSpecifier.path) return;
+     importSpecifier.localName = specifier.local.name;
+     const transformedASTImport = AST.createASTImportDeclaration(importSpecifier);

@@ -1,0 +1,17 @@
+export type Colors =
+    | "green"
+    | "green-hover"
+    | "white"
+    | "black"
+    | "light-grey"
+    | "light-grey-hover"
+    | "medium-grey"
+    | "grey"
+    | "dark-grey"
+    | "light-red"
+    | "light-green"
+    | "red"
+    | "orange"
+    | "orange-hover"
+    | "light-blue"
+    | "transparent";

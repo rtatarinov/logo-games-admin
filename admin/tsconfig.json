@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "esModuleInterop": false,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "jsx": "react-jsx",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "noEmit": true,
+        "noFallthroughCasesInSwitch": true,
+        "paths": {
+            "@app/*": ["./*"]
+        },
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ESNext",
+        "useDefineForClassFields": true
+    },
+    "include": ["src", "src/shared/.types/*.d.ts", "tailwind.config.ts"],
+    "exclude": ["node_modules", "dist"],
+    "references": [{ "path": "./tsconfig.node.json" }]
+}

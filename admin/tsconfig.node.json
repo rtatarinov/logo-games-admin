@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "composite": true,
+        "module": "CommonJS"
+    },
+    "include": ["vite.config.ts", "env.d.ts"]
+}

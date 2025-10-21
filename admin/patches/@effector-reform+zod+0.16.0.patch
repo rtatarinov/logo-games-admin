@@ -1,0 +1,20 @@
+diff --git a/node_modules/@effector-reform/zod/dist/index.cjs b/node_modules/@effector-reform/zod/dist/index.cjs
+index 78c4eb1..fedf550 100644
+--- a/node_modules/@effector-reform/zod/dist/index.cjs
++++ b/node_modules/@effector-reform/zod/dist/index.cjs
+@@ -1 +1 @@
+-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function o(r){return async n=>{try{return await r.parseAsync(n),null}catch(u){const{errors:a}=u;return a.reduce((t,e)=>(t[e.path.join(".")]||(t[e.path.join(".")]=e.message),t),{})}}}exports.zodAdapter=o;
++"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});function o(r){return async n=>{try{return await r.parseAsync(n),null}catch(u){const{issues:a}=u;return a.reduce((t,e)=>(t[e.path.join(".")]||(t[e.path.join(".")]=e.message),t),{})}}}exports.zodAdapter=o;
+diff --git a/node_modules/@effector-reform/zod/dist/index.js b/node_modules/@effector-reform/zod/dist/index.js
+index 240991d..b0088e7 100644
+--- a/node_modules/@effector-reform/zod/dist/index.js
++++ b/node_modules/@effector-reform/zod/dist/index.js
+@@ -4,7 +4,7 @@ function a(e) {
+       return await e.parseAsync(r), null;
+     } catch (u) {
+       const {
+-        errors: s
++        issues: s
+       } = u;
+       return s.reduce((t, n) => (t[n.path.join(".")] || (t[n.path.join(".")] = n.message), t), {});
+     }

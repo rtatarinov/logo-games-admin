@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&subset=cyrillic,cyrillic-ext,latin-ext&display=swap');
+
+@import "@mantine/core/styles.css";
+@import "@mantine/notifications/styles.css";
+@import "@mantine/dates/styles.css";
+
+@tailwind components;
+@tailwind utilities;
+
+a { text-decoration: none; }
+fieldset { border: none; }

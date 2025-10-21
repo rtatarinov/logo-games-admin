@@ -1,0 +1,2 @@
+.closed { transform: translateX(-100%) }
+.opened { transform: translateX(0) }
