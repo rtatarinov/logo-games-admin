@@ -5,17 +5,26 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
-import type { CreateAdminDto, LoginAdminDto } from "./logoGamesAPIDocs.schemas";
 import { httpClient } from "../../http-client/http-client";
+import type { AdminDto, CreateAdminDto, LoginAdminDto } from "./logoGamesAPIDocs.schemas";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+/**
+ * @summary Получить данные текущего администратора
+ */
+export const adminControllerCurrent = (options?: SecondParameter<typeof httpClient<AdminDto>>) => {
+    return httpClient<AdminDto>({ url: `/api/admin/current`, method: "GET" }, options);
+};
+/**
+ * @summary Создать нового администратора
+ */
 export const adminControllerCreate = ({
     createAdminDto,
     options,
 }: {
     createAdminDto: CreateAdminDto;
-    options?: SecondParameter<typeof httpClient<void>>;
+    options?: SecondParameter<typeof httpClient<AdminDto>>;
 }) => {
-    return httpClient<void>(
+    return httpClient<AdminDto>(
         {
             url: `/api/admin`,
             method: "POST",
@@ -25,6 +34,9 @@ export const adminControllerCreate = ({
         options,
     );
 };
+/**
+ * @summary Авторизация администратора
+ */
 export const adminControllerLogin = ({
     loginAdminDto,
     options,
@@ -42,9 +54,21 @@ export const adminControllerLogin = ({
         options,
     );
 };
+/**
+ * @summary Выход из учетной записи администратора
+ */
+export const adminControllerLogout = (options?: SecondParameter<typeof httpClient<void>>) => {
+    return httpClient<void>({ url: `/api/admin/logout`, method: "POST" }, options);
+};
+export type AdminControllerCurrentResult = NonNullable<
+    Awaited<ReturnType<typeof adminControllerCurrent>>
+>;
 export type AdminControllerCreateResult = NonNullable<
     Awaited<ReturnType<typeof adminControllerCreate>>
 >;
 export type AdminControllerLoginResult = NonNullable<
     Awaited<ReturnType<typeof adminControllerLogin>>
+>;
+export type AdminControllerLogoutResult = NonNullable<
+    Awaited<ReturnType<typeof adminControllerLogout>>
 >;

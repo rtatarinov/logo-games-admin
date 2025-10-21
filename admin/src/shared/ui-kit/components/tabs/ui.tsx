@@ -27,7 +27,7 @@ const _Tabs = forwardRef<HTMLDivElement, TabsProps>(
             classNames={{
                 root: cx(tw.flex.flex_col.gap_8, className),
                 list: tw.flex_nowrap.w_full.overflow_x_auto,
-                tab: tw.gap_2.px_3.py_[2.5].transition_colors.active(tw.border_green).lg(tw.px_6),
+                tab: tw.gap_2.px_3.py_[2.5].transition_colors.active(tw.border_blue).lg(tw.px_6),
                 tabLabel: tw.text_body_16,
                 tabSection: tw.m_0,
             }}

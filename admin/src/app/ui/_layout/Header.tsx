@@ -46,11 +46,11 @@ export const Header = ({ onToggleNavigation, isOpenNavigation, $$model }: Header
                         size={22}
                     />
 
-                    <Link to={homeRoute}>
+                    <Link to={homeRoute} className={tw.leading_none}>
                         <Logo
                             mode="full"
-                            width={isMobile ? 190 : 229}
-                            height={41}
+                            width={isMobile ? 180 : 284}
+                            height={isMobile ? 41 : 65}
                             className={tw.md(tw.block)}
                         />
                     </Link>

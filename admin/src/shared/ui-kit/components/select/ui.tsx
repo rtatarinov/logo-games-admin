@@ -134,7 +134,7 @@ const _Item = ({ label, id, className, active, ...rest }: SelectSimpleItem) => (
         className={cx(
             tw.flex.py_2.px_2.cursor_pointer.hover(tw.bg_light_green),
             {
-                [tw.bg_green.text_white.hover(tw.important(tw.bg_green))]: Boolean(active),
+                [tw.bg_blue.text_white.hover(tw.important(tw.bg_blue))]: Boolean(active),
             },
             className,
         )}

@@ -75,7 +75,7 @@ const _SegmentedControl = forwardRef(
                     data={data}
                     classNames={{
                         root: tw.bg_light_green.p_[1.5],
-                        indicator: tw.bg_green,
+                        indicator: tw.bg_blue,
                         label: tw.text_black.font_semibold.text_body_16.active(tw.text_white),
                     }}
                     {...rest}

@@ -1,12 +1,38 @@
 {
   "openapi": "3.0.0",
   "paths": {
+    "/api/admin/current": {
+      "get": {
+        "operationId": "AdminController_current",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Данные текущего администратора",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Не авторизован"
+          }
+        },
+        "summary": "Получить данные текущего администратора",
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
     "/api/admin": {
       "post": {
         "operationId": "AdminController_create",
         "parameters": [],
         "requestBody": {
           "required": true,
+          "description": "Данные для создания администратора",
           "content": {
             "application/json": {
               "schema": {
@@ -16,10 +42,24 @@
           }
         },
         "responses": {
-          "201": {
-            "description": ""
+          "200": {
+            "description": "Данные созданного администратора",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Администратор с таким email уже существует"
+          },
+          "401": {
+            "description": "Не авторизован"
           }
         },
+        "summary": "Создать нового администратора",
         "tags": [
           "Admin"
         ]
@@ -31,6 +71,7 @@
         "parameters": [],
         "requestBody": {
           "required": true,
+          "description": "Данные для авторизации администратора",
           "content": {
             "application/json": {
               "schema": {
@@ -40,10 +81,29 @@
           }
         },
         "responses": {
-          "201": {
-            "description": ""
+          "200": {
+            "description": "Успешная авторизация"
+          },
+          "401": {
+            "description": "Неверные учетные данные"
           }
         },
+        "summary": "Авторизация администратора",
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "/api/admin/logout": {
+      "post": {
+        "operationId": "AdminController_logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешный выход из системы"
+          }
+        },
+        "summary": "Выход из учетной записи администратора",
         "tags": [
           "Admin"
         ]
@@ -1243,13 +1303,74 @@
   "servers": [],
   "components": {
     "schemas": {
+      "AdminDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Уникальный идентификатор администратора",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Имя администратора",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email администратора",
+            "example": "admin@example.com"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ]
+      },
       "CreateAdminDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Имя администратора",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email администратора",
+            "example": "admin@example.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "Пароль администратора",
+            "example": "StrongPass123!"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
       },
       "LoginAdminDto": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email администратора",
+            "example": "admin@example.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "Пароль администратора",
+            "example": "Password123!"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
       },
       "CreateGameDto": {
         "type": "object",

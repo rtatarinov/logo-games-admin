@@ -31,8 +31,7 @@
         "simple-import-sort"
     ],
     "parserOptions": {
-        "projectService": true,
-        "tsconfigRootDir": "."
+        "projectService": true
     },
     "rules": {
         "default-case": "error",

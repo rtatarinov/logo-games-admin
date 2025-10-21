@@ -1,11 +1,12 @@
-import {createHistoryRouter} from "atomic-router";
-import {createRoutesView} from "atomic-router-react";
-import type {SessionModel} from "@app/modules/session";
+import { createHistoryRouter } from "atomic-router";
+import { createRoutesView } from "atomic-router-react";
 
-import {createLazyPage} from "@app/shared/lib/lazy-page";
-import {userRoute, notFoundRoute, signInRoute,} from "@app/shared/routing";
+import type { SessionModel } from "@app/modules/session";
 
-import type {NotificationModel} from "@app/infrastructure-entities/notification-center";
+import { createLazyPage } from "@app/shared/lib/lazy-page";
+import { homeRoute, notFoundRoute, signInRoute, userRoute, usersRoute } from "@app/shared/routing";
+
+import type { NotificationModel } from "@app/infrastructure-entities/notification-center";
 
 export const createRouting = ({
     $$notification,
@@ -15,6 +16,8 @@ export const createRouting = ({
     $$session: SessionModel;
 }) => {
     const routes = [
+        { path: "/", route: homeRoute },
+        { path: "/users", route: usersRoute },
         { path: "/sign-in", route: signInRoute },
         { path: "/process/launched/:id", route: userRoute },
     ];
@@ -27,6 +30,14 @@ export const createRouting = ({
         },
         routes: [
             { route: notFoundRoute, view: () => <div>Страница не найдена</div> },
+            {
+                route: homeRoute,
+                view: createLazyPage(
+                    homeRoute,
+                    { $$notification, $$session },
+                    () => import("./home"),
+                ),
+            },
             {
                 route: signInRoute,
                 view: createLazyPage(

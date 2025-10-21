@@ -206,8 +206,8 @@ export default defineConfig(({ mode }) => {
             },
         },
         define: {
-            __API_BASE_URI__: isProd ? "window.___.API_URI" : JSON.stringify(env.API_BASE_URI),
-            __LOG_BASE_URI__: isProd ? "window.___.LOG_URI" : JSON.stringify(env.LOG_BASE_URI),
+            __API_BASE_URI__: JSON.stringify(env.API_BASE_URI),
+            __LOG_BASE_URI__: JSON.stringify(env.LOG_BASE_URI),
         },
         resolve: {
             alias: {

@@ -21,14 +21,14 @@ export interface BadgeProps
 const rootClassNamesByMode = {
     fill: {
         red: tw.bg_red,
-        green: tw.bg_green,
+        green: tw.bg_blue,
         orange: tw.bg_orange,
         black: tw.bg_black,
         grey: tw.bg_grey,
     },
     outline: {
         red: tw.border.border_solid.border_red.bg_transparent,
-        green: tw.border.border_solid.border_green.bg_transparent,
+        green: tw.border.border_solid.border_blue.bg_transparent,
         orange: tw.border.border_solid.border_orange.bg_transparent,
         black: tw.border.border_solid.border_black.bg_transparent,
         grey: tw.border.border_solid.border_grey.bg_transparent,
@@ -45,7 +45,7 @@ const labelClassNamesByMode = {
     },
     outline: {
         red: tw.text_red,
-        green: tw.text_green,
+        green: tw.text_blue,
         orange: tw.text_orange,
         black: tw.text_black,
         grey: tw.text_grey,

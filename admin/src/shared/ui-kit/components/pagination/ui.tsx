@@ -19,7 +19,7 @@ const _Pagination = forwardRef<HTMLDivElement, PaginationProps>(({ className, ..
         classNames={{
             root: className,
             control: tw.w_8.h_8.rounded.border_black.text_black.text_body_16.font_semibold
-                .active(tw.bg_green.text_white.border_green)
+                .active(tw.bg_blue.text_white.border_blue)
                 .hover(tw.bg_light_grey),
         }}
         previousIcon={IconChevronLeft}

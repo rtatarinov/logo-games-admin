@@ -72,7 +72,7 @@ export const Text: StoryObj = {
                 </div>
 
                 <div>
-                    <h2 className={tw.text_h2.text_green.m_0}>Font family</h2>
+                    <h2 className={tw.text_h2.text_blue.m_0}>Font family</h2>
 
                     <ul>
                         <li>Open Sans</li>
@@ -80,7 +80,7 @@ export const Text: StoryObj = {
                 </div>
 
                 <div>
-                    <h2 className={tw.text_h2.text_green.m_0}>Font weights</h2>
+                    <h2 className={tw.text_h2.text_blue.m_0}>Font weights</h2>
 
                     <ul>
                         {toPairs(other.fontWeight).map(([key, weight]) => (
@@ -92,7 +92,7 @@ export const Text: StoryObj = {
                 </div>
 
                 <div className={tw.flex.flex_col.gap_10}>
-                    <h2 className={tw.text_h2.text_green.m_0}>Font sizes</h2>
+                    <h2 className={tw.text_h2.text_blue.m_0}>Font sizes</h2>
 
                     <ul className={tw.list_none.m_0.p_0.flex.flex_col.gap_4}>
                         {Object.entries(fontSizesConfig).map(([key, item]) => (

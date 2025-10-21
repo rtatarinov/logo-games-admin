@@ -66,7 +66,7 @@ export const violationSchema = z.union([
 ]);
 
 export const errorBaseSchema = z.object({
-    msg: z.string(),
+    message: z.string(),
     status: z.enum(HttpErrorStatus),
 });
 

@@ -5,13 +5,13 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
+import { httpClient } from "../../http-client/http-client";
 import type {
     CreateUserDto,
     LoginUserByEmailDto,
     LoginUserByVkDto,
     UserDto,
 } from "./logoGamesAPIDocs.schemas";
-import { httpClient } from "../../http-client/http-client";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 export const userControllerCurrent = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/user/current`, method: "GET" }, options);

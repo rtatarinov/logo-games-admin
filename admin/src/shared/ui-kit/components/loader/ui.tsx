@@ -16,7 +16,7 @@ export interface LoaderProps extends Pick<MantineLoaderProps, "children" | "type
 }
 
 const _Loader = forwardRef<HTMLDivElement, LoaderProps>(
-    ({ children, color = "green", className, centered, ...rest }, ref) =>
+    ({ children, color = "blue", className, centered, ...rest }, ref) =>
         Boolean(centered) ? (
             <div className={cx(tw.flex.justify_center.p_4.w_full, className)} ref={ref}>
                 <MantineLoader color={color} className={tw.leading_none} {...rest}>

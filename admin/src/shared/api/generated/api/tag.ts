@@ -5,8 +5,8 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
-import type { CreateTagDto, UpdateTagDto, UpdateTagPositionDto } from "./logoGamesAPIDocs.schemas";
 import { httpClient } from "../../http-client/http-client";
+import type { CreateTagDto, UpdateTagDto, UpdateTagPositionDto } from "./logoGamesAPIDocs.schemas";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 export const tagControllerFindAll = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/tag`, method: "GET" }, options);

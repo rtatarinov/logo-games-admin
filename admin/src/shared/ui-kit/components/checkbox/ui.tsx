@@ -27,7 +27,7 @@ const _Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                     body: tw.items_center,
                     label: cx(tw.text_body_16.select_none.cursor_pointer, labelClassName),
                     inner: tw.w_auto.h_auto,
-                    input: tw.w_6.h_6.cursor_pointer.checked(tw.bg_green),
+                    input: tw.w_6.h_6.cursor_pointer.checked(tw.bg_blue),
                 }}
                 checked={checked}
                 onChange={toggleCheckbox}

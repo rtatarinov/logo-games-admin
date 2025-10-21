@@ -81,7 +81,7 @@ const _TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
             return {
                 ...commonInputStyles,
                 field: tw.focus(tw.bg_light_grey_hover.text_black),
-                control: tw.active(tw.bg_green.text_white).hover(tw.bg_light_grey_hover),
+                control: tw.active(tw.bg_blue.text_white).hover(tw.bg_light_grey_hover),
             };
         }, [className, inputClassName, leftSection, withError]);
 

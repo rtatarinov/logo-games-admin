@@ -5,11 +5,27 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
+export interface AdminDto {
+    /** Уникальный идентификатор администратора */
+    id: number;
+    /** Имя администратора */
+    name: string;
+    /** Email администратора */
+    email: string;
+}
 export interface CreateAdminDto {
-    [key: string]: unknown;
+    /** Имя администратора */
+    name: string;
+    /** Email администратора */
+    email: string;
+    /** Пароль администратора */
+    password: string;
 }
 export interface LoginAdminDto {
-    [key: string]: unknown;
+    /** Email администратора */
+    email: string;
+    /** Пароль администратора */
+    password: string;
 }
 export interface CreateGameDto {
     [key: string]: unknown;

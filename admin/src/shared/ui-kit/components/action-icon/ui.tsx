@@ -17,7 +17,7 @@ export interface ActionIconProps
 
 const classNamesByMode = {
     grey: tw.rounded.bg_light_grey.text_black.hover(tw.bg_light_grey_hover.text_black),
-    unstyled: tw.rounded_none.bg_transparent.text_black.hover(tw.bg_transparent.text_green),
+    unstyled: tw.rounded_none.bg_transparent.text_black.hover(tw.bg_transparent.text_blue),
 } as const satisfies Record<ActionIconMode, string>;
 
 const _ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(

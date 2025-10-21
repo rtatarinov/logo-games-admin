@@ -1,6 +1,6 @@
 export type Colors =
-    | "green"
-    | "green-hover"
+    | "blue"
+    | "blue-hover"
     | "white"
     | "black"
     | "light-grey"

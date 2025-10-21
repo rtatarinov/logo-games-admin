@@ -15,5 +15,6 @@ export * from "./api/tag";
 export * from "./api/tariff-plan";
 export * from "./api/user";
 export * from "./api/webhook";
+export * from "./schemas/admin";
 export * from "./schemas/session";
 export * from "./schemas/user";

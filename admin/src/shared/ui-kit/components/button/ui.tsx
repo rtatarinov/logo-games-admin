@@ -22,13 +22,13 @@ export interface ButtonProps
 
 const rootClassNamesByMode = {
     fill: {
-        green: tw.border_none.bg_green.px_4.py_2.hover_or_active(tw.bg_green_hover),
+        green: tw.border_none.bg_blue.px_4.py_2.hover_or_active(tw.bg_blue_hover),
         black: tw.border_none.bg_black.px_4.py_2.hover_or_active(tw.bg_dark_grey),
         orange: tw.border_none.bg_orange.px_4.py_2.hover_or_active(tw.bg_orange_hover),
         red: tw.border_none.bg_red.px_4.py_2.hover_or_active(tw.bg_orange_hover),
     },
     outline: {
-        green: tw.border.border_solid.px_4.py_["1.5"].border_green.bg_transparent.hover_or_active(
+        green: tw.border.border_solid.px_4.py_["1.5"].border_blue.bg_transparent.hover_or_active(
             tw.bg_light_grey,
         ),
         black: tw.border.border_solid.px_4.py_["1.5"].border_black.bg_transparent.hover_or_active(
@@ -63,19 +63,19 @@ const textClassNamesByMode = {
         red: tw.text_white,
     },
     outline: {
-        green: tw.text_green,
+        green: tw.text_blue,
         black: tw.text_black,
         orange: tw.text_orange,
         red: tw.text_red,
     },
     link: {
-        green: tw.text_green.underline.hover(tw.no_underline),
+        green: tw.text_blue.underline.hover(tw.no_underline),
         black: tw.text_black.underline.hover(tw.no_underline),
         orange: tw.text_orange.underline.hover(tw.no_underline),
         red: tw.text_red.underline.hover(tw.no_underline),
     },
     light: {
-        green: tw.text_green,
+        green: tw.text_blue,
         black: tw.text_black,
         orange: tw.text_orange,
         red: tw.text_red,

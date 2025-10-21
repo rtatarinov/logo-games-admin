@@ -6,22 +6,11 @@ import ReactDOM from "react-dom/client";
 import type { Effect } from "effector";
 import type { Message } from "effector/inspect";
 import { inspect } from "effector/inspect";
-import { isNotEmpty, isNotNil } from "ramda";
 
 import { appDomain } from "@app/shared/effector";
-import {
-    initAutoFlush,
-    initUnhandledErrorHandlers,
-    log,
-    maybeError,
-    reasonText,
-} from "@app/shared/lib/clilog";
+import { initUnhandledErrorHandlers, log, maybeError, reasonText } from "@app/shared/lib/clilog";
 
 import { App, createAppModel } from "./app";
-
-if (isNotNil(__LOG_BASE_URI__) && isNotEmpty(__LOG_BASE_URI__)) {
-    initAutoFlush(__LOG_BASE_URI__);
-}
 
 initUnhandledErrorHandlers();
 

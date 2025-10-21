@@ -1,7 +1,7 @@
 import { combine, sample } from "effector";
 import { empty, not } from "patronum";
 
-import { createEffect, createEvent, createStore } from "@app/shared/effector";
+import { createEffect, createEvent } from "@app/shared/effector";
 
 import { buildFetchMeQuery } from "../api";
 import { createLogoutModel } from "./logout";
@@ -21,7 +21,7 @@ export const createSessionModel = () => {
     const $me = fetchMeQuery.$data;
     const $isSessionInitializing = fetchMeQuery.$pending;
     const $isLoggedIn = not(empty($me));
-    const $name = createStore(null);
+    const $name = $me.map((me) => me?.name ?? null);
 
     const $canFetchUser = combine(
         $isLoggedIn,

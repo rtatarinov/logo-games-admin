@@ -14,7 +14,7 @@ export const SignIn = ({ $$model }: { $$model: SignInModel }) => (
             ].w_full
         }
     >
-        <Logo mode="full" width={229} height={41} className={tw.mx_auto} />
+        <Logo mode="full" width={263} height={61} className={tw.mx_auto} />
 
         <SignInForm $$model={$$model}>
             <ForgotPassword />

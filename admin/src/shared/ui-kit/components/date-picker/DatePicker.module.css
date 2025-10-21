@@ -7,12 +7,12 @@
 }
 
 .day[data-selected="true"] {
-    @apply bg-green text-white;
+    @apply bg-blue text-white;
 }
 
 .day[data-in-range="true"],
 .day[data-in-range="true"].day[data-today="true"] {
-    @apply bg-green text-white;
+    @apply bg-blue text-white;
 }
 
 .day[data-in-range="true"]:hover,

@@ -1,10 +1,11 @@
 /** @type {import("tailwindcss").Config} */
 
 import plugin from "tailwindcss/plugin";
-import { Config } from "tailwindcss/types/config";
+import type { Config } from "tailwindcss/types/config";
 import { typewindTransforms } from "typewind/transform";
 
-import { breakpoints, Colors, Texts } from "./src/shared/ui-kit/theme/config";
+import type { Colors, Texts } from "./src/shared/ui-kit/theme/config";
+import { breakpoints } from "./src/shared/ui-kit/theme/config";
 
 const colors = {
     transparent: "var(--mantine-color-transparent-0)",
@@ -15,8 +16,8 @@ const colors = {
     "light-grey-hover": "var(--mantine-color-light-grey-hover-0)",
     "medium-grey": "var(--mantine-color-medium-grey-0)",
     "dark-grey": "var(--mantine-color-dark-grey-0)",
-    green: "var(--mantine-color-green-0)",
-    "green-hover": "var(--mantine-color-green-hover-0)",
+    blue: "var(--mantine-color-blue-0)",
+    "blue-hover": "var(--mantine-color-blue-hover-0)",
     red: "var(--mantine-color-red-0)",
     "light-red": "var(--mantine-color-light-red-0)",
     orange: "var(--mantine-color-orange-0)",

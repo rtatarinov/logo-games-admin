@@ -1,14 +1,25 @@
-import {useMemo} from "react";
+import { useMemo } from "react";
 
-import {IconBook2,} from "@tabler/icons-react";
+import { IconBook2, IconHome } from "@tabler/icons-react";
 
-import type {UserRole} from "@app/shared/api/generated";
-import {usersRoute,} from "@app/shared/routing";
+import { homeRoute, usersRoute } from "@app/shared/routing";
 
-export const useNavigationConfig = (role: UserRole) =>
+export const useNavigationConfig = () =>
     useMemo(
         () =>
             [
+                {
+                    id: "dictionaries",
+                    title: "",
+                    children: [
+                        {
+                            title: "Главная",
+                            icon: IconHome,
+                            href: homeRoute,
+                            hidden: false,
+                        },
+                    ],
+                },
                 {
                     id: "common",
                     title: "Пользователи",
@@ -24,8 +35,7 @@ export const useNavigationConfig = (role: UserRole) =>
                 {
                     id: "dictionaries",
                     title: "Справочники",
-                    children: [
-                    ],
+                    children: [],
                 },
             ]
                 .map((section) => ({
@@ -33,5 +43,5 @@ export const useNavigationConfig = (role: UserRole) =>
                     children: section.children.filter((child) => !child.hidden),
                 }))
                 .filter((section) => section.children.length > 0),
-        [role],
+        [],
     );

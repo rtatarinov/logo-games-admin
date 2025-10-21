@@ -15,7 +15,7 @@ const _CopyIcon = forwardRef<HTMLButtonElement, CopyIconProps>(({ value, timeout
         {({ copied, copy }) => (
             <ActionIcon color={copied ? "teal" : "blue"} onClick={copy} ref={ref}>
                 {copied ? (
-                    <IconCopyCheck width={24} height={24} className={tw.text_green} />
+                    <IconCopyCheck width={24} height={24} className={tw.text_blue} />
                 ) : (
                     <IconCopy width={24} height={24} className={tw.text_grey} />
                 )}

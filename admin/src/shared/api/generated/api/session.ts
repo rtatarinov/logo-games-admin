@@ -5,8 +5,8 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
-import type { RefreshUserTokenDto } from "./logoGamesAPIDocs.schemas";
 import { httpClient } from "../../http-client/http-client";
+import type { RefreshUserTokenDto } from "./logoGamesAPIDocs.schemas";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 /**
  * @summary Получить список сессий пользователя по ID

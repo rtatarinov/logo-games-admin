@@ -18,7 +18,7 @@ const _NavItem = ({ children, className, icon, onCloseNavigation, ...rest }: Nav
     <Link
         className={cx(
             tw.inline_flex.items_center.gap_2.px_3.py_2.text_black.transition_colors.hover_or_active(
-                tw.text_green,
+                tw.text_blue,
             ),
             className,
         )}

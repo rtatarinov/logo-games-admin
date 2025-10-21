@@ -17,7 +17,7 @@ import type { SignInModel } from "../../model/sign-in";
 import { FieldNames } from "../../model/sign-in";
 
 const errorMessages = {
-    [FieldNames.login]: {
+    [FieldNames.email]: {
         [ValidationErrorEnum.Required]: () => "Введите имя пользователя",
     },
     [FieldNames.password]: {
@@ -41,16 +41,16 @@ export const SignInForm = ({
             <form onSubmit={onSubmit} noValidate={true} className={tw.flex.flex_col.gap_8}>
                 <div className={tw.flex.flex_col.gap_4.items_stretch}>
                     <TextInput
-                        value={fields[FieldNames.login].value}
-                        onChange={fields[FieldNames.login].onChange}
+                        value={fields[FieldNames.email].value}
+                        onChange={fields[FieldNames.email].onChange}
                         placeholder="..."
                         label="Введите логин"
                         leftSection={<IconUser width={20} height={20} />}
                         required={true}
                         autoCapitalize="none"
                         error={getFieldError(
-                            errors.form[FieldNames.login],
-                            errorMessages[FieldNames.login],
+                            errors.form[FieldNames.email],
+                            errorMessages[FieldNames.email],
                         )}
                     />
 

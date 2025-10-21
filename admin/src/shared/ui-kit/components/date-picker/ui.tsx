@@ -97,10 +97,10 @@ const _DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, ref) => 
                 day: cx(tw.w_12.h_12.lg(tw.w_9.h_9), styles.day),
                 weekday: tw.text_grey.font_semibold,
                 monthsListControl: tw
-                    .selected(tw.important(tw.bg_green.text_white))
+                    .selected(tw.important(tw.bg_blue.text_white))
                     .hover(tw.bg_light_green),
                 yearsListControl: tw
-                    .selected(tw.important(tw.bg_green.text_white))
+                    .selected(tw.important(tw.bg_blue.text_white))
                     .hover(tw.bg_light_green),
                 placeholder: tw.text_dark_grey,
                 presetButton: tw.text_black.font_semibold.px_["1.5"]

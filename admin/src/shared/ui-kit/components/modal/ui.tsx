@@ -62,7 +62,7 @@ const _Modal = forwardRef<HTMLDivElement, ModalProps>(
                         <IconX
                             width={24}
                             height={24}
-                            className={tw.text_black.hover_or_active(tw.text_green)}
+                            className={tw.text_black.hover_or_active(tw.text_blue)}
                         />
                     ),
                 }}

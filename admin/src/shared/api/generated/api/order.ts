@@ -5,8 +5,8 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
-import type { CreateOrderDto } from "./logoGamesAPIDocs.schemas";
 import { httpClient } from "../../http-client/http-client";
+import type { CreateOrderDto } from "./logoGamesAPIDocs.schemas";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 export const orderControllerFindAll = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/order`, method: "GET" }, options);

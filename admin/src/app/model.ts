@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 import { createSessionModel } from "@app/modules/session";
 
 import { createEvent } from "@app/shared/effector";
-import { homeRoute, signInRoute } from "@app/shared/routing";
+import { signInRoute } from "@app/shared/routing";
 
 import { createNotificationModel } from "@app/infrastructure-entities/notification-center";
 
@@ -27,10 +27,8 @@ export const createAppModel = () => {
 
     const { Pages, router } = createRouting({ $$notification, $$session });
 
-    const $isAppLayoutHidden = combine(
-        signInRoute.$isOpened,
-        homeRoute.$isOpened,
-        (signInRoute, homeRoute) => [signInRoute, homeRoute].some(Boolean),
+    const $isAppLayoutHidden = combine(signInRoute.$isOpened, (signInRoute) =>
+        [signInRoute].some(Boolean),
     );
 
     const $isSessionFreeRoute = combine(signInRoute.$isOpened, (signInRoute) =>

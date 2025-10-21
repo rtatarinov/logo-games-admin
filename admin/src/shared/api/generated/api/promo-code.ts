@@ -5,12 +5,12 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
+import { httpClient } from "../../http-client/http-client";
 import type {
     CheckPromoCodeDto,
     CreatePromoCodeDto,
     UpdatePromoCodeDto,
 } from "./logoGamesAPIDocs.schemas";
-import { httpClient } from "../../http-client/http-client";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 export const promoCodeControllerFindAll = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/promo-code`, method: "GET" }, options);

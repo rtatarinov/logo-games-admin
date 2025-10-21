@@ -55,7 +55,7 @@ export const AppLayout = ({ $$model, children }: { children: ReactNode; $$model:
     return (
         <HeaderHeightProvider>
             <AppShell
-                header={{ height: 64 }}
+                header={{ height: 74 }}
                 navbar={{
                     width: 324,
                     breakpoint: theme.breakpoints.lg,
@@ -71,10 +71,7 @@ export const AppLayout = ({ $$model, children }: { children: ReactNode; $$model:
 
                 <AppShell.Navbar className={tw.border_r_light_grey}>
                     <AppShell.Section grow={true} component={NavigationScroll}>
-                        <Navigation
-                            onCloseNavigation={handleCloseNavigation}
-                            $$session={$$model.$$session}
-                        />
+                        <Navigation onCloseNavigation={handleCloseNavigation} />
                     </AppShell.Section>
                 </AppShell.Navbar>
 

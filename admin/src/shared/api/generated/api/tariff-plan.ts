@@ -5,12 +5,12 @@
  * Logogames docs
  * OpenAPI spec version: 1.0
  */
+import { httpClient } from "../../http-client/http-client";
 import type {
     CreateTariffPlanDto,
     UpdateTariffPlanDto,
     UpdateTariffPlanPositionDto,
 } from "./logoGamesAPIDocs.schemas";
-import { httpClient } from "../../http-client/http-client";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 export const tariffPlanControllerFindAll = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/tariff-plan`, method: "GET" }, options);

@@ -17,15 +17,15 @@ import { buildSignInMutation } from "../api";
 export type SignInModel = ReturnType<typeof createSignInModel>;
 
 export enum FieldNames {
-    login = "login",
+    email = "email",
     password = "password",
 }
 
 const schema = z.object({
-    [FieldNames.login]: z
+    [FieldNames.email]: z
         .string()
         .nonempty(
-            stringifyViolationError({ name: FieldNames.login, code: ValidationErrorEnum.Required }),
+            stringifyViolationError({ name: FieldNames.email, code: ValidationErrorEnum.Required }),
         ),
     [FieldNames.password]: z.string().nonempty(
         stringifyViolationError({
@@ -54,7 +54,7 @@ export const createSignInModel = () => {
 
     const $form = createForm({
         schema: {
-            [FieldNames.login]: createField<string>(""),
+            [FieldNames.email]: createField<string>(""),
             [FieldNames.password]: createField<string>(""),
         },
         validation: zodAdapter(schema),
@@ -75,7 +75,7 @@ export const createSignInModel = () => {
 
     sample({
         clock: $form.validatedAndSubmitted,
-        fn: (authLoginBody) => ({ authLoginBody }),
+        fn: (loginAdminDto) => ({ loginAdminDto }),
         target: signInMutation.start,
     });
 

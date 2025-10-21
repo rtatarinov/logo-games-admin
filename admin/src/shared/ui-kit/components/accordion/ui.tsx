@@ -51,8 +51,8 @@ const _Accordion = <Multiple extends boolean = false>({
         classNames={{
             item: tw.border_none.border_b.border_b_solid.border_b_light_grey_hover.rounded_none.bg_transparent
                 .important(tw.mt_0)
-                .active(tw.border_b_green),
-            control: tw.flex_row.gap_3.text_body_20.active(tw.text_green),
+                .active(tw.border_b_blue),
+            control: tw.flex_row.gap_3.text_body_20.active(tw.text_blue),
         }}
     >
         {isNotNil(items)
