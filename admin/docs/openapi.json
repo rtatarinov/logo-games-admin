@@ -1291,6 +1291,59 @@
           "Marketing"
         ]
       }
+    },
+    "/api/statistic/platform": {
+      "get": {
+        "operationId": "StatisticController_findPlatformStatistic",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Статистика платформы успешно получена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformStatisticDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Ошибка авторизации"
+          }
+        },
+        "summary": "Получение текущей общей статистики платформы",
+        "tags": [
+          "Statistic"
+        ]
+      }
+    },
+    "/api/statistic/platform/history": {
+      "get": {
+        "operationId": "StatisticController_findPlatformStatisticHistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "История статистики платформы успешно получена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlatformHistoryStatisticDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Ошибка авторизации"
+          }
+        },
+        "summary": "Получение истории общей статистики платформы",
+        "tags": [
+          "Statistic"
+        ]
+      }
     }
   },
   "info": {
@@ -1617,6 +1670,64 @@
       "GetVkConsumersDto": {
         "type": "object",
         "properties": {}
+      },
+      "PlatformStatisticDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionsCount": {
+            "type": "number",
+            "description": "Количество активных подписок",
+            "example": 150
+          },
+          "vkDonutsCount": {
+            "type": "number",
+            "description": "Количество ВК донатов",
+            "example": 25
+          }
+        },
+        "required": [
+          "subscriptionsCount",
+          "vkDonutsCount"
+        ]
+      },
+      "PlatformHistoryStatisticDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Уникальный идентификатор статистики платформы",
+            "example": 1
+          },
+          "subscriptionsCount": {
+            "type": "number",
+            "description": "Количество подписок",
+            "example": 150
+          },
+          "vkDonutsCount": {
+            "type": "number",
+            "description": "Количество ВК донатов",
+            "example": 25
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Дата создания записи",
+            "example": "2023-12-01T10:30:00.000Z"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Дата последнего обновления записи",
+            "example": "2023-12-01T15:45:00.000Z",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "subscriptionsCount",
+          "vkDonutsCount",
+          "createdAt"
+        ]
       }
     }
   }

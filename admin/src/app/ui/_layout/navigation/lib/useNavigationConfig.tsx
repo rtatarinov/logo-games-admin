@@ -18,12 +18,6 @@ export const useNavigationConfig = () =>
                             href: homeRoute,
                             hidden: false,
                         },
-                    ],
-                },
-                {
-                    id: "common",
-                    title: "Пользователи",
-                    children: [
                         {
                             title: "Список пользователей",
                             icon: IconBook2,
@@ -31,11 +25,6 @@ export const useNavigationConfig = () =>
                             hidden: false,
                         },
                     ],
-                },
-                {
-                    id: "dictionaries",
-                    title: "Справочники",
-                    children: [],
                 },
             ]
                 .map((section) => ({

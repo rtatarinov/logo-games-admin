@@ -1,5 +1,7 @@
 import { useUnit } from "effector-react";
 
+import { PlatformStatistic } from "@app/modules/platform-statistic";
+
 import { Loader, PageTitle } from "@app/shared/ui-kit/components";
 
 import type { HomeModel } from "@app/pages/home/model";
@@ -14,6 +16,7 @@ export const Home = ({ $$model }: { $$model: HomeModel }) => {
     return (
         <>
             <PageTitle>Главная</PageTitle>
+            <PlatformStatistic $$model={$$model.$$platformStatistic} />
         </>
     );
 };
