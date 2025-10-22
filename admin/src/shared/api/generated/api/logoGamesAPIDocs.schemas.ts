@@ -170,3 +170,24 @@ export interface UpdateTagPositionDto {
 export interface GetVkConsumersDto {
     [key: string]: unknown;
 }
+export interface PlatformStatisticDto {
+    /** Количество активных подписок */
+    subscriptionsCount: number;
+    /** Количество ВК донатов */
+    vkDonutsCount: number;
+}
+export interface PlatformHistoryStatisticDto {
+    /** Уникальный идентификатор статистики платформы */
+    id: number;
+    /** Количество подписок */
+    subscriptionsCount: number;
+    /** Количество ВК донатов */
+    vkDonutsCount: number;
+    /** Дата создания записи */
+    createdAt: string;
+    /**
+     * Дата последнего обновления записи
+     * @nullable
+     */
+    updatedAt?: string | null;
+}
