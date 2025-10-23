@@ -10,9 +10,43 @@ import type {
     CreateUserDto,
     LoginUserByEmailDto,
     LoginUserByVkDto,
+    UserControllerFindAll200,
+    UserControllerFindAllParams,
     UserDto,
 } from "./logoGamesAPIDocs.schemas";
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+/**
+ * @summary Получить список всех пользователей
+ */
+export const userControllerFindAll = ({
+    params,
+    options,
+}: {
+    params?: UserControllerFindAllParams;
+    options?: SecondParameter<typeof httpClient<UserControllerFindAll200>>;
+} = {}) => {
+    return httpClient<UserControllerFindAll200>(
+        { url: `/api/user`, method: "GET", params },
+        options,
+    );
+};
+export const userControllerCreate = ({
+    createUserDto,
+    options,
+}: {
+    createUserDto: CreateUserDto;
+    options?: SecondParameter<typeof httpClient<void>>;
+}) => {
+    return httpClient<void>(
+        {
+            url: `/api/user`,
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            data: createUserDto,
+        },
+        options,
+    );
+};
 export const userControllerCurrent = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/user/current`, method: "GET" }, options);
 };
@@ -36,23 +70,6 @@ export const userControllerGetUserByVkId = ({
     options?: SecondParameter<typeof httpClient<void>>;
 }) => {
     return httpClient<void>({ url: `/api/user/vk/${vkId}`, method: "GET" }, options);
-};
-export const userControllerCreate = ({
-    createUserDto,
-    options,
-}: {
-    createUserDto: CreateUserDto;
-    options?: SecondParameter<typeof httpClient<void>>;
-}) => {
-    return httpClient<void>(
-        {
-            url: `/api/user`,
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            data: createUserDto,
-        },
-        options,
-    );
 };
 export const userControllerLoginEmail = ({
     loginUserByEmailDto,
@@ -91,6 +108,12 @@ export const userControllerLoginVk = ({
 export const userControllerLogout = (options?: SecondParameter<typeof httpClient<void>>) => {
     return httpClient<void>({ url: `/api/user/logout`, method: "POST" }, options);
 };
+export type UserControllerFindAllResult = NonNullable<
+    Awaited<ReturnType<typeof userControllerFindAll>>
+>;
+export type UserControllerCreateResult = NonNullable<
+    Awaited<ReturnType<typeof userControllerCreate>>
+>;
 export type UserControllerCurrentResult = NonNullable<
     Awaited<ReturnType<typeof userControllerCurrent>>
 >;
@@ -99,9 +122,6 @@ export type UserControllerGetUserByIdResult = NonNullable<
 >;
 export type UserControllerGetUserByVkIdResult = NonNullable<
     Awaited<ReturnType<typeof userControllerGetUserByVkId>>
->;
-export type UserControllerCreateResult = NonNullable<
-    Awaited<ReturnType<typeof userControllerCreate>>
 >;
 export type UserControllerLoginEmailResult = NonNullable<
     Awaited<ReturnType<typeof userControllerLoginEmail>>

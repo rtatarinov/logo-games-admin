@@ -6,13 +6,45 @@
  * OpenAPI spec version: 1.0
  */
 import { z as zod } from "zod";
+export const userControllerFindAllResponse = zod.object({
+    items: zod.array(
+        zod.object({
+            id: zod.number(),
+            vkId: zod.number(),
+            email: zod.string(),
+            firstName: zod.string(),
+            lastName: zod.string(),
+            avatarUrl: zod.string().nullable(),
+            createdAt: zod.iso.datetime({}),
+            updatedAt: zod.object({}),
+            trial: zod.object({
+                isActive: zod.boolean().optional(),
+                startAt: zod.iso.datetime({}).optional(),
+                endAt: zod.iso.datetime({}).optional(),
+            }),
+            subscription: zod
+                .object({
+                    type: zod.enum(["one_time", "recurring", "vk"]),
+                    status: zod.enum(["active", "expired", "cancelled", "payment_failed"]),
+                    nextPaymentAt: zod.string(),
+                    nextPaymentAtUnix: zod.number(),
+                    expiredAt: zod.object({}).nullable(),
+                })
+                .nullable(),
+            favoritesGames: zod.array(zod.number()),
+        }),
+    ),
+    total: zod.number(),
+    page: zod.number(),
+    limit: zod.number(),
+});
 export const userControllerGetUserByIdResponse = zod.object({
     id: zod.number(),
     vkId: zod.number(),
     email: zod.string(),
     firstName: zod.string(),
     lastName: zod.string(),
-    avatarUrl: zod.object({}),
+    avatarUrl: zod.string().nullable(),
     createdAt: zod.iso.datetime({}),
     updatedAt: zod.object({}),
     trial: zod.object({

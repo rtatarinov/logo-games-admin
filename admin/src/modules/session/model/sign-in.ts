@@ -42,13 +42,13 @@ export const createSignInModel = () => {
     const signIn = createEvent();
     const updateValidationStrategies = createEvent<ValidationStrategy[]>();
 
-    const signInMutation = buildSignInMutation();
+    const mutation = buildSignInMutation();
 
     const $serverError = createStore<{
         params: unknown;
         error: Error | InvalidDataError;
         meta: unknown;
-    } | null>(null).on(signInMutation.finished.failure, (_, error) => error);
+    } | null>(null).on(mutation.finished.failure, (_, error) => error);
 
     const $validationStrategies = restore(updateValidationStrategies, ["submit"] as const);
 
@@ -76,17 +76,17 @@ export const createSignInModel = () => {
     sample({
         clock: $form.validatedAndSubmitted,
         fn: (loginAdminDto) => ({ loginAdminDto }),
-        target: signInMutation.start,
+        target: mutation.start,
     });
 
     sample({
-        clock: signInMutation.finished.success,
+        clock: mutation.finished.success,
         target: [destroy, homeRoute.open],
     });
 
     sample({
         clock: destroy,
-        target: [$form.reset, signInMutation.reset],
+        target: [$form.reset, mutation.reset],
     });
 
     reset({
@@ -97,7 +97,9 @@ export const createSignInModel = () => {
     return {
         $form,
         $errors,
-        $isLoading: signInMutation.$pending,
+        $isLoading: mutation.$pending,
+
+        mutation,
 
         init,
         destroy,

@@ -26,6 +26,11 @@ export const createPlatformStatisticModel = () => {
         target: query.start,
     });
 
+    sample({
+        clock: destroy,
+        target: query.reset,
+    });
+
     return {
         $data,
         $isLoading,

@@ -17,9 +17,9 @@ export const createRouting = ({
 }) => {
     const routes = [
         { path: "/", route: homeRoute },
-        { path: "/users", route: usersRoute },
         { path: "/sign-in", route: signInRoute },
-        { path: "/process/launched/:id", route: userRoute },
+        { path: "/users", route: usersRoute },
+        { path: "/users/:id", route: userRoute },
     ];
 
     const router = createHistoryRouter({ notFoundRoute, routes });
@@ -31,6 +31,14 @@ export const createRouting = ({
         routes: [
             { route: notFoundRoute, view: () => <div>Страница не найдена</div> },
             {
+                route: signInRoute,
+                view: createLazyPage(
+                    signInRoute,
+                    { $$notification, $$session },
+                    () => import("./sign-in"),
+                ),
+            },
+            {
                 route: homeRoute,
                 view: createLazyPage(
                     homeRoute,
@@ -39,11 +47,11 @@ export const createRouting = ({
                 ),
             },
             {
-                route: signInRoute,
+                route: usersRoute,
                 view: createLazyPage(
-                    signInRoute,
+                    usersRoute,
                     { $$notification, $$session },
-                    () => import("./sign-in"),
+                    () => import("./users"),
                 ),
             },
         ],

@@ -30,6 +30,11 @@ export const createSignInPageModel = ({
     });
 
     sample({
+        clock: $$signIn.mutation.$succeeded,
+        target: $$session.fetchMe,
+    });
+
+    sample({
         clock: route.closed,
         target: [$$pageMeta.destroy],
     });

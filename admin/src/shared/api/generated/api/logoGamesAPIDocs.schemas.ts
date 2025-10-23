@@ -78,9 +78,6 @@ export interface UserSubscriptionDto {
      */
     expiredAt: UserSubscriptionDtoExpiredAt;
 }
-export type UserDtoAvatarUrl = {
-    [key: string]: unknown;
-};
 export type UserDtoUpdatedAt = {
     [key: string]: unknown;
 };
@@ -99,7 +96,8 @@ export interface UserDto {
     email: string;
     firstName: string;
     lastName: string;
-    avatarUrl: UserDtoAvatarUrl;
+    /** @nullable */
+    avatarUrl: string | null;
     createdAt: string;
     updatedAt: UserDtoUpdatedAt;
     trial: UserDtoTrial;
@@ -191,3 +189,42 @@ export interface PlatformHistoryStatisticDto {
      */
     updatedAt?: string | null;
 }
+export type UserControllerFindAllParams = {
+    /**
+     * Поиск
+     */
+    search?: string;
+    /**
+     * Страница
+     * @minimum 1
+     */
+    page?: number;
+    /**
+     * Лимит
+     * @minimum 1
+     */
+    limit?: number;
+    sort?: UserControllerFindAllSort;
+    order?: UserControllerFindAllOrder;
+};
+export type UserControllerFindAllSort =
+    (typeof UserControllerFindAllSort)[keyof typeof UserControllerFindAllSort];
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const UserControllerFindAllSort = {
+    createdAt: "createdAt",
+    firstName: "firstName",
+    lastName: "lastName",
+} as const;
+export type UserControllerFindAllOrder =
+    (typeof UserControllerFindAllOrder)[keyof typeof UserControllerFindAllOrder];
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const UserControllerFindAllOrder = {
+    ASC: "ASC",
+    DESC: "DESC",
+} as const;
+export type UserControllerFindAll200 = {
+    items: UserDto[];
+    total: number;
+    page: number;
+    limit: number;
+};

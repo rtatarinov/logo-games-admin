@@ -32,3 +32,4 @@ export * from "./action-button";
 export * from "./multi-line-text";
 export * from "./password-input";
 export * from "./checkbox";
+export * from "./avatar";
