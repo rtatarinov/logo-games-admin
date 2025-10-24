@@ -24,10 +24,6 @@ RUN apk add --no-cache findutils gzip brotli && \
         brotli -Z "$file" -o "$file.br"; \
     done
 
-FROM nginx:${NGINX_VERSION}-alpine3.20 AS nginx-brotli-build
-
-ARG NGINX_VERSION
-
 FROM nginx:${NGINX_VERSION}-alpine3.20
 ARG NGINX_VERSION
 COPY --from=build-frontend /app/dist /var/www/html
