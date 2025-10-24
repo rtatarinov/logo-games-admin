@@ -54,6 +54,14 @@ export const createRouting = ({
                     () => import("./users"),
                 ),
             },
+            {
+                route: userRoute,
+                view: createLazyPage(
+                    userRoute,
+                    { $$notification, $$session },
+                    () => import("./user-card"),
+                ),
+            },
         ],
     });
 

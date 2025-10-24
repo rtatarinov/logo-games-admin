@@ -1,0 +1,73 @@
+name: Docker Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      IMAGE_NAME: logo-games-admin
+      IMAGE_PATH: ./nginx/Dockerfile
+      IMAGE_FILE: logo-games-admin.image
+
+      SERVER_DOMAIN: ${{ github.ref == 'refs/heads/main' && secrets.SERVER_ADMIN_DOMAIN }}
+      SERVER_SSH_HOST: ${{ github.ref == 'refs/heads/main' && secrets.SERVER_SSH_HOST || secrets.SERVER_SSH_HOST_DEVELOP }}
+      SERVER_SSH_USER: ${{ github.ref == 'refs/heads/main' && secrets.SERVER_SSH_USER || secrets.SERVER_SSH_USER_DEVELOP }}
+      SERVER_SSH_KEY: ${{ github.ref == 'refs/heads/main' && secrets.SERVER_SSH_PRIVATE_KEY || secrets.SERVER_SSH_PRIVATE_KEY_DEVELOP }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.ref_name }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        run: |
+          docker build -f $IMAGE_PATH \
+            --build-arg API_BASE_URI=$SERVER_DOMAIN \
+            --progress plain -t $IMAGE_NAME .
+
+      - name: Save Docker image
+        run: |
+          docker save $IMAGE_NAME > $IMAGE_FILE
+          ls -lah $IMAGE_FILE
+
+      - name: Upload image to server via rsync
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avz --compress-level=6 --progress
+          path: ${{ env.IMAGE_FILE }}
+          remote_path: ~/logo-games/images/
+          remote_host: ${{ env.SERVER_SSH_HOST }}
+          remote_user: ${{ env.SERVER_SSH_USER }}
+          remote_key: ${{ env.SERVER_SSH_KEY }}
+
+      - name: Deploy and reload container
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ env.SERVER_SSH_HOST }}
+          username: ${{ env.SERVER_SSH_USER }}
+          key: ${{ env.SERVER_SSH_KEY }}
+          script: |
+            cd ./logo-games && \
+            docker compose stop admin && \
+            docker compose rm -f admin && \
+            docker rmi logo-games-admin || true && \
+            docker load -i ./images/logo-games-admin.image && \
+            docker compose up -d admin && \
+            rm -f ./images/logo-games-admin.image && \
+            echo "✅ Admin successfully deployed for branch ${{ github.ref_name }}"

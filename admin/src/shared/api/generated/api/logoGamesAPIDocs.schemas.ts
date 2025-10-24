@@ -33,6 +33,11 @@ export interface CreateGameDto {
 export interface UpdateGameDto {
     [key: string]: unknown;
 }
+export interface TrialDto {
+    isActive: boolean;
+    startAt: string;
+    endAt: string;
+}
 /**
  * Тип подписки
  */
@@ -56,13 +61,6 @@ export const UserSubscriptionDtoStatus = {
     cancelled: "cancelled",
     payment_failed: "payment_failed",
 } as const;
-/**
- * Дата истечения подписки в формате ISO
- * @nullable
- */
-export type UserSubscriptionDtoExpiredAt = {
-    [key: string]: unknown;
-} | null;
 export interface UserSubscriptionDto {
     /** Тип подписки */
     type: UserSubscriptionDtoType;
@@ -76,16 +74,15 @@ export interface UserSubscriptionDto {
      * Дата истечения подписки в формате ISO
      * @nullable
      */
-    expiredAt: UserSubscriptionDtoExpiredAt;
+    expiredAt: string | null;
 }
 export type UserDtoUpdatedAt = {
     [key: string]: unknown;
 };
-export type UserDtoTrial = {
-    isActive?: boolean;
-    startAt?: string;
-    endAt?: string;
-};
+/**
+ * @nullable
+ */
+export type UserDtoTrial = TrialDto | null;
 /**
  * @nullable
  */
@@ -100,6 +97,7 @@ export interface UserDto {
     avatarUrl: string | null;
     createdAt: string;
     updatedAt: UserDtoUpdatedAt;
+    /** @nullable */
     trial: UserDtoTrial;
     /** @nullable */
     subscription: UserDtoSubscription;

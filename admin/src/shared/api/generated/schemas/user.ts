@@ -17,18 +17,20 @@ export const userControllerFindAllResponse = zod.object({
             avatarUrl: zod.string().nullable(),
             createdAt: zod.iso.datetime({}),
             updatedAt: zod.object({}),
-            trial: zod.object({
-                isActive: zod.boolean().optional(),
-                startAt: zod.iso.datetime({}).optional(),
-                endAt: zod.iso.datetime({}).optional(),
-            }),
+            trial: zod
+                .object({
+                    isActive: zod.boolean(),
+                    startAt: zod.iso.datetime({}),
+                    endAt: zod.iso.datetime({}),
+                })
+                .nullable(),
             subscription: zod
                 .object({
                     type: zod.enum(["one_time", "recurring", "vk"]),
                     status: zod.enum(["active", "expired", "cancelled", "payment_failed"]),
                     nextPaymentAt: zod.string(),
                     nextPaymentAtUnix: zod.number(),
-                    expiredAt: zod.object({}).nullable(),
+                    expiredAt: zod.iso.datetime({}).nullable(),
                 })
                 .nullable(),
             favoritesGames: zod.array(zod.number()),
@@ -47,18 +49,20 @@ export const userControllerGetUserByIdResponse = zod.object({
     avatarUrl: zod.string().nullable(),
     createdAt: zod.iso.datetime({}),
     updatedAt: zod.object({}),
-    trial: zod.object({
-        isActive: zod.boolean().optional(),
-        startAt: zod.iso.datetime({}).optional(),
-        endAt: zod.iso.datetime({}).optional(),
-    }),
+    trial: zod
+        .object({
+            isActive: zod.boolean(),
+            startAt: zod.iso.datetime({}),
+            endAt: zod.iso.datetime({}),
+        })
+        .nullable(),
     subscription: zod
         .object({
             type: zod.enum(["one_time", "recurring", "vk"]),
             status: zod.enum(["active", "expired", "cancelled", "payment_failed"]),
             nextPaymentAt: zod.string(),
             nextPaymentAtUnix: zod.number(),
-            expiredAt: zod.object({}).nullable(),
+            expiredAt: zod.iso.datetime({}).nullable(),
         })
         .nullable(),
     favoritesGames: zod.array(zod.number()),

@@ -31,6 +31,8 @@ const config = {
     "light-blue": "bg-light-blue",
     "light-green": "bg-light-green",
     transparent: "bg-transparent",
+    yellow: "bg-yellow",
+    green: "bg-green",
 } as const satisfies Record<ThemeColors, string>;
 
 export const Colors: StoryObj = {

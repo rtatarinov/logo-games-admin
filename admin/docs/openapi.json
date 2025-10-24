@@ -1536,6 +1536,30 @@
         "type": "object",
         "properties": {}
       },
+      "TrialDto": {
+        "type": "object",
+        "properties": {
+          "isActive": {
+            "type": "boolean",
+            "example": true
+          },
+          "startAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-10-01T00:00:00.000Z"
+          },
+          "endAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-10-06T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "isActive",
+          "startAt",
+          "endAt"
+        ]
+      },
       "UserSubscriptionDto": {
         "type": "object",
         "properties": {
@@ -1571,7 +1595,8 @@
             "description": "Дата следующего платежа в Unix timestamp"
           },
           "expiredAt": {
-            "type": "object",
+            "type": "string",
+            "format": "date-time",
             "example": "2025-12-21T10:30:00.000Z",
             "nullable": true,
             "description": "Дата истечения подписки в формате ISO"
@@ -1623,24 +1648,12 @@
             "example": "2022-11-11T11:11:11.111Z"
           },
           "trial": {
-            "type": "object",
-            "properties": {
-              "isActive": {
-                "type": "boolean",
-                "example": true
-              },
-              "startAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2025-10-01T00:00:00.000Z"
-              },
-              "endAt": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2025-10-06T00:00:00.000Z"
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TrialDto"
               }
-            },
-            "required": []
+            ]
           },
           "subscription": {
             "nullable": true,

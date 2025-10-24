@@ -6,7 +6,7 @@ import { Avatar as MantineAvatar, createPolymorphicComponent } from "@mantine/co
 export interface AvatarProps extends Pick<MantineAvatarProps, "alt"> {
     src: string | null;
     name: string;
-    size: 32 | 48 | 64;
+    size: 32 | 48 | 64 | 96 | 128;
 }
 
 const _Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => (

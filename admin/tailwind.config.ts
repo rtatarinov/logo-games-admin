@@ -19,6 +19,8 @@ const colors = {
     blue: "var(--mantine-color-blue-0)",
     "blue-hover": "var(--mantine-color-blue-hover-0)",
     red: "var(--mantine-color-red-0)",
+    yellow: "var(--mantine-color-yellow-0)",
+    green: "var(--mantine-color-green-0)",
     "light-red": "var(--mantine-color-light-red-0)",
     orange: "var(--mantine-color-orange-0)",
     "orange-hover": "var(--mantine-color-orange-hover-0)",

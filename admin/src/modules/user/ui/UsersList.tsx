@@ -38,11 +38,13 @@ export const UsersList = ({ $$model }: { $$model: UsersListModel }) => {
             <div className={tw.flex.flex_col.gap_6.mb_12}>
                 {users.map((user) => (
                     <div className={tw.flex.items_start.gap_2.lg(tw.gap_4)} key={user.id}>
-                        <Avatar
-                            src={user.avatarUrl}
-                            name={`${user.firstName} ${user.lastName}`}
-                            size={isMobile ? 48 : 64}
-                        />
+                        <Link to={userRoute} params={{ id: String(user.id) }}>
+                            <Avatar
+                                src={user.avatarUrl}
+                                name={`${user.firstName} ${user.lastName}`}
+                                size={isMobile ? 48 : 64}
+                            />
+                        </Link>
 
                         <div>
                             <Link

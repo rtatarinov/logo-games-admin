@@ -2,17 +2,15 @@ ARG NGINX_VERSION=1.27.3
 
 FROM node:20.18.0-alpine3.20 AS build-frontend
 WORKDIR /app
-COPY frontend/package.json frontend/yarn.lock frontend/tailwind.config.ts ./
-COPY frontend/patches ./patches
+COPY admin/package.json admin/yarn.lock admin/tailwind.config.ts ./
+COPY admin/patches ./patches
 RUN yarn install --non-interactive
-ARG NEXT_PUBLIC_API_URL
-ARG NEXT_PUBLIC_DOMAIN_URL
-ARG NEXT_PUBLIC_VK_APP_ID
-COPY frontend ./
+ARG API_BASE_URI
+COPY admin ./
 RUN NODE_ENV=production yarn build
 
 RUN apk add --no-cache findutils gzip brotli && \
-    find ./out \( \
+    find ./dist \( \
         -name "*.html" -o \
         -name "*.js" -o \
         -name "*.css" -o \
@@ -43,7 +41,7 @@ RUN set -eux; \
 
 FROM nginx:${NGINX_VERSION}-alpine3.20
 ARG NGINX_VERSION
-COPY --from=build-frontend /app/out /var/www/html
+COPY --from=build-frontend /app/dist /var/www/html
 COPY nginx/config/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/config/default.conf /etc/nginx/conf.d
 COPY --from=nginx-brotli-build /nginx-build/nginx-${NGINX_VERSION}/objs/ngx_http_brotli_static_module.so /usr/lib/nginx/modules

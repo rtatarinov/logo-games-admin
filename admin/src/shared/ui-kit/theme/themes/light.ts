@@ -16,6 +16,7 @@ export const lightTheme = {
         "medium-grey": createColor("#ADB5BD"),
         "dark-grey": createColor("#828385"),
         "light-green": createColor("#ddead2"),
+        green: createColor("#5c940d"),
         blue: createColor("#1468BA"),
         "blue-hover": createColor("#0D5291"),
         red: createColor("#FF4545"),
@@ -24,5 +25,6 @@ export const lightTheme = {
         "orange-hover": createColor("#c54b0d"),
         "light-blue": createColor("#F2F7FF"),
         transparent: createColor("transparent"),
+        yellow: createColor("#FFC107"),
     },
 } satisfies MantineThemeOverride;
