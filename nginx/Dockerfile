@@ -2,7 +2,7 @@ ARG NGINX_VERSION=1.27.3
 
 FROM node:22.18.0-alpine AS build-frontend
 WORKDIR /app
-COPY admin/package.json admin/yarn.lock admin/tailwind.config.ts admin/src/shared/ui-kit/theme/config ./
+COPY admin/package.json admin/yarn.lock admin/tailwind.config.ts ./
 COPY admin/patches ./patches
 RUN yarn install --non-interactive
 ARG API_BASE_URI

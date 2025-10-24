@@ -5,7 +5,6 @@ import type { Config } from "tailwindcss/types/config";
 import { typewindTransforms } from "typewind/transform";
 
 import type { Colors, Texts } from "./src/shared/ui-kit/theme/config";
-import { breakpoints } from "./src/shared/ui-kit/theme/config";
 
 const colors = {
     transparent: "var(--mantine-color-transparent-0)",
@@ -45,7 +44,13 @@ export default {
         transform: typewindTransforms,
     },
     theme: {
-        screens: breakpoints,
+        screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
+        },
         colors,
         fontSize,
     },
