@@ -1,6 +1,6 @@
 ARG NGINX_VERSION=1.27.3
 
-FROM node:22.18.0-alpine3.20 AS build-frontend
+FROM node:22.18.0-alpine AS build-frontend
 WORKDIR /app
 COPY admin/package.json admin/yarn.lock admin/tailwind.config.ts ./
 COPY admin/patches ./patches
