@@ -24,7 +24,7 @@ export const UserCardPage = ({ $$model }: { $$model: UserCardModel }) => {
                 </PageTitle>
 
                 <span>
-                    <CopyIcon value={`${APP_DOMAIN}/${user.id}`} />
+                    <CopyIcon value={`${APP_DOMAIN}/users/${user.id}`} />
                 </span>
             </div>
 
