@@ -1,4 +1,5 @@
 import { sample } from "effector";
+import { reset } from "patronum";
 import { indexBy, prop } from "ramda";
 
 import { createEvent, createStore } from "@app/shared/effector";
@@ -70,9 +71,14 @@ export const createUsersListModel = () => {
         target: changeParams,
     });
 
+    reset({
+        clock: destroy,
+        target: $params,
+    });
+
     sample({
         clock: destroy,
-        target: query.reset,
+        target: [query.reset, $$pagination.destroy],
     });
 
     return {

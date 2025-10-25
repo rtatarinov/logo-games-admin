@@ -10,6 +10,14 @@ import { UserSubscriptionStatus } from "./UserSubscriptionStatus";
 import { UserSubscriptionType } from "./UserSubscriptionType";
 
 export const UserSubscription = ({ user }: { user: UserDto }) => {
+    if (isNotNil(user.trial) && user.trial.isActive) {
+        return (
+            <Content>
+                <div className={tw.text_dark_grey}>У пользователя активирован пробный доступ</div>
+            </Content>
+        );
+    }
+
     if (isNil(user.subscription)) {
         return (
             <Content>

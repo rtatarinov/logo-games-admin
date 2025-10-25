@@ -1,10 +1,12 @@
 import { Link } from "atomic-router-react";
 import { useUnit } from "effector-react";
+import { isNotNil } from "ramda";
 import { tw } from "typewind";
 
 import type { UsersListModel } from "@app/modules/user";
 import { useMediaQuery } from "@mantine/hooks";
 
+import { UserSubscriptionDtoStatus } from "@app/shared/api/generated";
 import { userRoute } from "@app/shared/routing";
 import { Avatar, Loader, Pagination } from "@app/shared/ui-kit/components";
 import { useTheme } from "@app/shared/ui-kit/theme";
@@ -43,6 +45,11 @@ export const UsersList = ({ $$model }: { $$model: UsersListModel }) => {
                                 src={user.avatarUrl}
                                 name={`${user.firstName} ${user.lastName}`}
                                 size={isMobile ? 48 : 64}
+                                isSilver={Boolean(user.trial?.isActive)}
+                                isPremium={
+                                    isNotNil(user.subscription) &&
+                                    user.subscription.status === UserSubscriptionDtoStatus.active
+                                }
                             />
                         </Link>
 
